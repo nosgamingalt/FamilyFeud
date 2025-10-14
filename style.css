@@ -1,0 +1,236 @@
+:root {
+  --bg1: #0b0b0b;      /* Deep black background */
+  --bg2: #1a1a1a;      /* Slightly lighter black */
+  --accent: #ff7b00;   /* Vivid orange highlight */
+  --card: #2a2a2a;     /* Dark grey for cards */
+  --muted: #b0b0b0;    /* Light grey for text */
+  --good: #22c55e;     /* Correct answer green */
+  --bad: #ef4444;      /* Wrong answer red */
+  --input-bg: #1f1f1f; /* Dark grey input/select background */
+  --input-text: #f5f5f5; /* Light text for inputs/selects */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg1), var(--bg2));
+  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.top {
+  text-align: center;
+  padding: 18px 12px;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+.top .sub {
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.controls {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.controls .row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* FIXED INPUTS AND DROPDOWNS */
+.controls select,
+.controls input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+.controls select option {
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+/* Focus outline for accessibility */
+.controls select:focus,
+.controls input:focus {
+  outline: 2px solid var(--accent);
+}
+
+.team-controls {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.buttons button {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.buttons button:hover {
+  background: #ff9500;
+  transform: translateY(-2px);
+}
+
+.buttons .teacher-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  margin-left: 8px;
+}
+
+.game-area {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.left-panel {
+  flex: 1;
+}
+
+.right-panel {
+  width: 320px;
+}
+
+.timer {
+  font-size: 1.6rem;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  width: 120px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.question-card {
+  background: var(--card);
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+#questionText {
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.answer {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.12s, background 0.12s;
+}
+
+.answer:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 123, 0, 0.2);
+}
+
+.answer.revealed {
+  background: var(--good);
+  color: #0b0b0b;
+  font-weight: 700;
+}
+
+.answer.missed {
+  background: var(--bad);
+  color: #0b0b0b;
+  font-weight: 700;
+}
+
+.teacher-area {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.teacher-area input,
+.teacher-area select {
+  width: 100%;
+  margin: 6px 0;
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+.help {
+  background: rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.footer {
+  text-align: center;
+  padding: 12px;
+  color: var(--muted);
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+@media (max-width: 880px) {
+  .game-area {
+    flex-direction: column;
+  }
+
+  .right-panel {
+    width: 100%;
+  }
+}
