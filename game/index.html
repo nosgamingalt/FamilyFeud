@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio Feud 🧬</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1 class="title">🧬 Bio Feud: Cell Wars!</h1>
+
+  <div id="scoreboard" class="scoreboard">
+    <div>Team A: <span id="scoreA">0</span></div>
+    <div>Team B: <span id="scoreB">0</span></div>
+  </div>
+
+  <div id="categoryBox" class="category-box">
+    <label for="category">Choose category:</label>
+    <select id="category">
+      <option value="all">All Categories</option>
+      <option value="cell">Cell Biology</option>
+      <option value="genetics">Genetics</option>
+      <option value="ecology">Ecology</option>
+      <option value="systems">Human Systems</option>
+      <option value="photosynthesis">Photosynthesis</option>
+    </select>
+  </div>
+
+  <div id="timer" class="timer">⏱️ 20</div>
+
+  <div id="game" class="question-card">
+    <h2 id="question">Press “Next Question” to start!</h2>
+    <div id="answers"></div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="nextQuestion()">Next Question</button>
+    <button onclick="addPoints('A')">+ Points Team A</button>
+    <button onclick="addPoints('B')">+ Points Team B</button>
+    <button onclick="toggleTeacherMode()">Teacher Mode</button>
+    <button onclick="resetGame()">Reset</button>
+  </div>
+
+  <!-- Sound effects -->
+  <audio id="correctSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b18ccf156.mp3?filename=correct-2-46134.mp3"></audio>
+  <audio id="wrongSound" src="https://cdn.pixabay.com/download/audio/2021/09/01/audio_9938cb96a7.mp3?filename=error-2-126514.mp3"></audio>
+  <audio id="buzzerSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_427de36c36.mp3?filename=buzzer-1-46130.mp3"></audio>
+
+</body>
+</html>
