@@ -1,0 +1,233 @@
+{
+  "What is Biology?": [
+    {
+      "q": "A scientist observes that a structure can move, respond to stimuli, and reproduce. What characteristic confirms it is living rather than a sophisticated machine?",
+      "answers": ["Uses energy/metabolism", "Made of cells", "Maintains homeostasis", "Grows and develops", "Has DNA/genetic material"],
+      "points": [40, 30, 15, 10, 5]
+    },
+    {
+      "q": "A biology student is organizing specimens from simplest to most complex. They have: cells, tissues, organs, and organ systems. Which organizational level represents multiple tissues working together?",
+      "answers": ["Organ", "Organ system", "Tissue level", "Functional unit", "Structure with multiple tissues"],
+      "points": [50, 20, 15, 10, 5]
+    },
+    {
+      "q": "A biologist must choose between experimenting on a whole organism versus cell cultures. What is the main advantage of studying the whole organism?",
+      "answers": ["See interactions between systems", "More realistic/natural conditions", "Observe behavior", "Study complex processes", "See homeostasis in action"],
+      "points": [35, 30, 15, 12, 8]
+    },
+    {
+      "q": "What process do ALL living things perform to convert nutrients into usable energy?",
+      "answers": ["Cellular respiration", "Metabolism", "Breaking chemical bonds", "ATP production", "Glycolysis"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "In a controlled experiment, you change the temperature while studying enzyme activity. Everything else stays the same. What do we call the factors that stay the same?",
+      "answers": ["Constants/controlled variables", "Independent variable", "Control group", "Dependent variable", "Experimental conditions"],
+      "points": [50, 20, 15, 10, 5]
+    },
+    {
+      "q": "A hypothesis states 'If plants receive more sunlight, then they will grow taller.' What type of variable is 'plant height'?",
+      "answers": ["Dependent variable", "Independent variable", "Controlled variable", "Measured variable", "Response variable"],
+      "points": [40, 25, 15, 12, 8]
+    },
+    {
+      "q": "What characteristic of life explains why you sweat when you're hot and shiver when you're cold?",
+      "answers": ["Homeostasis", "Response to stimuli", "Regulation", "Adaptation", "Metabolism"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "When organizing life from smallest to largest, what comes after organism?",
+      "answers": ["Population", "Community", "Species", "Ecosystem", "Organ system"],
+      "points": [40, 25, 18, 12, 5]
+    },
+    {
+      "q": "What fundamental unit of life was discovered by Robert Hooke when examining cork under a microscope?",
+      "answers": ["Cell", "Nucleus", "Cell wall", "Tissue", "Cell membrane"],
+      "points": [50, 20, 15, 10, 5]
+    },
+    {
+      "q": "A theory in science is best described as what?",
+      "answers": ["Well-tested explanation", "Supported by evidence", "Can be modified with new data", "Broader than a hypothesis", "Based on many experiments"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "What tool would give you the highest magnification when observing bacteria?",
+      "answers": ["Electron microscope", "Compound microscope", "Light microscope", "Scanning microscope", "Transmission microscope"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "All living things must have what chemical element as the backbone of their molecules?",
+      "answers": ["Carbon", "Oxygen", "Hydrogen", "Nitrogen", "Phosphorus"],
+      "points": [50, 20, 15, 10, 5]
+    },
+    {
+      "q": "What is the basic unit that makes up all living things according to Cell Theory?",
+      "answers": ["Cell", "Atom", "Molecule", "Tissue", "Organism"],
+      "points": [55, 20, 12, 8, 5]
+    },
+    {
+      "q": "When making observations in an experiment, what type uses measurements and numbers?",
+      "answers": ["Quantitative", "Qualitative", "Descriptive", "Numerical", "Objective"],
+      "points": [45, 30, 12, 8, 5]
+    },
+    {
+      "q": "What process allows species to change over time and become better suited to their environment?",
+      "answers": ["Evolution", "Natural selection", "Adaptation", "Mutation", "Survival of fittest"],
+      "points": [40, 30, 15, 10, 5]
+    }
+  ],
+  "Biochemistry": [
+    {
+      "q": "An ionic bond forms between two atoms. What is the fundamental process that occurs with their electrons?",
+      "answers": ["Transfer of electrons", "One atom loses, one gains electrons", "Electron donation/acceptance", "Forming charged ions", "Creating opposite charges"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "A student tests a food sample. Biuret test turns purple and Sudan IV turns red, but Benedict's and iodine tests are negative. Which macromolecules are present?",
+      "answers": ["Proteins and lipids", "Lipids and proteins", "Protein and fat", "No carbohydrates present", "Two macromolecules detected"],
+      "points": [50, 25, 15, 8, 2]
+    },
+    {
+      "q": "What describes the primary structure of a protein?",
+      "answers": ["Sequence of amino acids", "Order of amino acids", "Linear chain of amino acids", "Amino acid sequence", "Peptide bond connections"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "Water molecules stick together due to hydrogen bonding. What property does this create that helps plants transport water?",
+      "answers": ["Cohesion", "Adhesion", "Surface tension", "Capillary action", "High surface tension"],
+      "points": [40, 30, 15, 10, 5]
+    },
+    {
+      "q": "An enzyme's function is destroyed when exposed to high heat. What specifically has been altered?",
+      "answers": ["Shape/3D structure", "Active site", "Protein structure denatured", "Tertiary structure", "Conformation"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Carbon can form 4 covalent bonds. What property of carbon allows this?",
+      "answers": ["4 valence electrons", "Outer shell electrons", "Electron configuration", "Can share 4 electrons", "Tetravalent"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "A solution has a pH of 3. What is the concentration of H+ ions compared to a pH of 6?",
+      "answers": ["1000 times more/higher", "More acidic", "Higher H+ concentration", "More hydrogen ions", "103 times more"],
+      "points": [40, 25, 20, 10, 5]
+    },
+    {
+      "q": "What type of macromolecule is an enzyme?",
+      "answers": ["Protein", "Biological catalyst", "Polypeptide", "Amino acid chain", "Catalyst protein"],
+      "points": [50, 25, 12, 8, 5]
+    },
+    {
+      "q": "Glucose and fructose have the same molecular formula (C6H12O6) but different structures. What term describes their relationship?",
+      "answers": ["Isomers", "Structural isomers", "Same formula different structure", "Monosaccharides", "Simple sugars"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "What bond connects amino acids together in a protein?",
+      "answers": ["Peptide bond", "Covalent bond", "Amino acid bond", "Protein bond", "Dehydration synthesis bond"],
+      "points": [50, 25, 12, 8, 5]
+    },
+    {
+      "q": "A lipid molecule has many C-H bonds and few C-O bonds. What property does this give the molecule?",
+      "answers": ["Hydrophobic/nonpolar", "Doesn't dissolve in water", "Water-repelling", "Fat-soluble", "Insoluble in water"],
+      "points": [40, 30, 15, 10, 5]
+    },
+    {
+      "q": "What process breaks down polymers into monomers by adding water?",
+      "answers": ["Hydrolysis", "Breaking with water", "Digestion", "Catabolic reaction", "Water-splitting"],
+      "points": [50, 25, 15, 8, 2]
+    },
+    {
+      "q": "DNA and RNA are examples of which type of macromolecule?",
+      "answers": ["Nucleic acids", "Polynucleotides", "Genetic material", "Information molecules", "Nucleotide polymers"],
+      "points": [55, 25, 10, 7, 3]
+    },
+    {
+      "q": "Saturated fats have no double bonds between carbons. What state are they typically in at room temperature?",
+      "answers": ["Solid", "Fat", "Butter-like", "Hard/firm", "Not liquid"],
+      "points": [50, 25, 12, 8, 5]
+    },
+    {
+      "q": "What happens to reaction rate when you increase enzyme concentration (assuming excess substrate)?",
+      "answers": ["Increases", "Reaction speeds up", "More product formed faster", "Direct relationship", "Gets faster"],
+      "points": [45, 30, 15, 7, 3]
+    }
+  ],
+  "Cells & Cell Energy": [
+    {
+      "q": "What cellular structure is found in plant cells but NOT in animal cells?",
+      "answers": ["Cell wall", "Chloroplasts", "Large central vacuole", "Plastids", "Rectangular shape"],
+      "points": [35, 35, 20, 7, 3]
+    },
+    {
+      "q": "During cellular respiration, where in the cell is the majority of ATP produced?",
+      "answers": ["Mitochondria", "Inner mitochondrial membrane", "Cristae", "Electron transport chain location", "Matrix and cristae"],
+      "points": [45, 25, 15, 10, 5]
+    },
+    {
+      "q": "A cell is placed in a solution and swells until it bursts. What type of solution was it placed in?",
+      "answers": ["Hypotonic", "Less solute than cell", "Water moved in", "Lower concentration outside", "Dilute solution"],
+      "points": [50, 25, 15, 8, 2]
+    },
+    {
+      "q": "What is the final electron acceptor in aerobic cellular respiration?",
+      "answers": ["Oxygen", "O2", "Molecular oxygen", "Creates water with electrons", "Accepts electrons at end"],
+      "points": [55, 25, 12, 5, 3]
+    },
+    {
+      "q": "The cell membrane is described as a 'fluid mosaic model.' What makes it 'fluid'?",
+      "answers": ["Phospholipids can move", "Molecules move laterally", "Flexible/not rigid", "Components move around", "Lipids flow"],
+      "points": [40, 30, 15, 10, 5]
+    },
+    {
+      "q": "Which organelle contains its own DNA and is thought to have originated from bacteria?",
+      "answers": ["Mitochondria", "Chloroplasts", "Both mitochondria and chloroplasts", "Endosymbiotic organelles", "Semi-autonomous organelles"],
+      "points": [45, 30, 15, 7, 3]
+    },
+    {
+      "q": "In glycolysis, one glucose molecule is broken down into what product?",
+      "answers": ["2 pyruvate", "Pyruvic acid", "2 three-carbon molecules", "2 pyruvate and 2 ATP", "Two pyruvate molecules"],
+      "points": [45, 30, 15, 8, 2]
+    },
+    {
+      "q": "What type of transport requires energy (ATP) to move substances across a membrane?",
+      "answers": ["Active transport", "Pumps", "Endocytosis/exocytosis", "Against concentration gradient", "Sodium-potassium pump"],
+      "points": [50, 25, 15, 7, 3]
+    },
+    {
+      "q": "Prokaryotic cells lack what membrane-bound structure that eukaryotic cells have?",
+      "answers": ["Nucleus", "Membrane-bound organelles", "Nuclear envelope", "True nucleus", "Organelles"],
+      "points": [45, 30, 15, 7, 3]
+    },
+    {
+      "q": "What is the net ATP production from one glucose molecule going through glycolysis only?",
+      "answers": ["2 ATP", "Two ATP net", "4 produced 2 used", "Net gain of 2", "2 ATP net gain"],
+      "points": [50, 25, 15, 7, 3]
+    },
+    {
+      "q": "Which organelle is responsible for packaging and modifying proteins for export?",
+      "answers": ["Golgi apparatus", "Golgi body", "Golgi complex", "Post office of cell", "Shipping organelle"],
+      "points": [55, 25, 12, 5, 3]
+    },
+    {
+      "q": "When oxygen is absent, what process can cells use to regenerate NAD+ and continue making ATP?",
+      "answers": ["Fermentation", "Anaerobic respiration", "Lactic acid fermentation", "Alcohol fermentation", "Anaerobic process"],
+      "points": [45, 30, 15, 7, 3]
+    },
+    {
+      "q": "What structure controls what enters and exits the cell?",
+      "answers": ["Cell membrane", "Plasma membrane", "Phospholipid bilayer", "Selectively permeable membrane", "Cell boundary"],
+      "points": [50, 30, 12, 5, 3]
+    },
+    {
+      "q": "In what part of the mitochondria does the Krebs cycle occur?",
+      "answers": ["Matrix", "Mitochondrial matrix", "Inner space", "Inside inner membrane", "Central area"],
+      "points": [55, 25, 12, 5, 3]
+    },
+    {
+      "q": "A cell with a damaged lysosome would have trouble doing what?",
+      "answers": ["Breaking down materials", "Digestion", "Waste removal", "Recycling organelles", "Autophagy"],
+      "points": [40, 30, 15, 10, 5]
+    }
+  ]
+}
