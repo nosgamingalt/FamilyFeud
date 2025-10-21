@@ -13,6 +13,12 @@ const BioFamilyFeud = () => {
   const [strikes, setStrikes] = useState(0);
   const [currentTeam, setCurrentTeam] = useState(1);
   const [showQuestion, setShowQuestion] = useState(false);
+  const [teacherMode, setTeacherMode] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  
+  const TEACHER_PASSWORD = 'biorocks'; // Change this to your desired password
 
   // Load questions from JSON file
   useEffect(() => {
@@ -115,6 +121,37 @@ const BioFamilyFeud = () => {
     }
   };
 
+  const handleTeacherModeToggle = () => {
+    if (teacherMode) {
+      // If already in teacher mode, just turn it off
+      setTeacherMode(false);
+    } else {
+      // If not in teacher mode, show password modal
+      setShowPasswordModal(true);
+      setPasswordInput('');
+      setPasswordError('');
+    }
+  };
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    if (passwordInput === TEACHER_PASSWORD) {
+      setTeacherMode(true);
+      setShowPasswordModal(false);
+      setPasswordInput('');
+      setPasswordError('');
+    } else {
+      setPasswordError('Incorrect password');
+      setPasswordInput('');
+    }
+  };
+
+  const closePasswordModal = () => {
+    setShowPasswordModal(false);
+    setPasswordInput('');
+    setPasswordError('');
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 flex items-center justify-center">
@@ -145,12 +182,67 @@ const BioFamilyFeud = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 p-4">
+      {/* Password Modal */}
+      {showPasswordModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <h2 className="text-2xl font-bold text-purple-900 mb-4">Teacher Mode</h2>
+            <p className="text-gray-700 mb-4">Enter the password to access Teacher Mode:</p>
+            <form onSubmit={handlePasswordSubmit}>
+              <input
+                type="password"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                placeholder="Enter password"
+                className="w-full p-3 border-2 border-purple-300 rounded-lg mb-2 focus:outline-none focus:border-purple-600"
+                autoFocus
+              />
+              {passwordError && (
+                <p className="text-red-600 text-sm mb-3">{passwordError}</p>
+              )}
+              <div className="flex gap-3">
+                <button
+                  type="submit"
+                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  onClick={closePasswordModal}
+                  className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg transition"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-yellow-400 mb-2" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.5)' }}>
-            BIOLOGY FEUD
-          </h1>
-          <p className="text-white text-xl">Wisconsin 9th & 10th Grade Edition</p>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex-1"></div>
+            <div className="flex-1 flex justify-center">
+              <h1 className="text-5xl font-bold text-yellow-400" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.5)' }}>
+                BIOLOGY FEUD
+              </h1>
+            </div>
+            <div className="flex-1 flex justify-end">
+              <button
+                onClick={handleTeacherModeToggle}
+                className={`${
+                  teacherMode 
+                    ? 'bg-green-600 hover:bg-green-700' 
+                    : 'bg-orange-600 hover:bg-orange-700'
+                } text-white font-bold py-2 px-4 rounded-lg transition text-sm`}
+              >
+                {teacherMode ? '👨‍🏫 Teacher Mode: ON' : '🔒 Teacher Mode'}
+              </button>
+            </div>
+          </div>
+          <p className="text-white text-xl">9th & 10th Grade Edition</p>
         </div>
 
         <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 mb-6">
@@ -227,6 +319,8 @@ const BioFamilyFeud = () => {
                 className={`p-4 rounded-lg text-left transition transform hover:scale-102 ${
                   revealed.includes(idx)
                     ? 'bg-green-600 text-white'
+                    : teacherMode
+                    ? 'bg-blue-500 bg-opacity-40 text-white hover:bg-opacity-50 border-2 border-yellow-400'
                     : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30'
                 }`}
               >
@@ -234,15 +328,17 @@ const BioFamilyFeud = () => {
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-bold w-8">{idx + 1}</span>
                     <span className="text-xl font-semibold">
-                      {revealed.includes(idx) ? answer : '???'}
+                      {revealed.includes(idx) || teacherMode ? answer : '???'}
                     </span>
                   </div>
-                  {revealed.includes(idx) && (
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
+                    {revealed.includes(idx) && (
                       <Check className="w-6 h-6" />
+                    )}
+                    {(revealed.includes(idx) || teacherMode) && (
                       <span className="text-2xl font-bold">{questionData.points[idx]}</span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </button>
             ))}

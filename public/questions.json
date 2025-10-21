@@ -1,233 +1,458 @@
 {
-  "What is Biology?": [
+  "Introduction to Cells": [
     {
-      "q": "A scientist observes that a structure can move, respond to stimuli, and reproduce. What characteristic confirms it is living rather than a sophisticated machine?",
-      "answers": ["Uses energy/metabolism", "Made of cells", "Maintains homeostasis", "Grows and develops", "Has DNA/genetic material"],
-      "points": [40, 30, 15, 10, 5]
+      "q": "We surveyed 100 students: Name something ALL living things are made of",
+      "answers": ["Cells", "Tiny cells", "Building blocks"],
+      "points": [70, 20, 10]
     },
     {
-      "q": "A biology student is organizing specimens from simplest to most complex. They have: cells, tissues, organs, and organ systems. Which organizational level represents multiple tissues working together?",
-      "answers": ["Organ", "Organ system", "Tissue level", "Functional unit", "Structure with multiple tissues"],
-      "points": [50, 20, 15, 10, 5]
+      "q": "Name something you need to see cells",
+      "answers": ["Microscope", "Lens", "Magnifying glass", "Special equipment"],
+      "points": [60, 20, 15, 5]
     },
     {
-      "q": "A biologist must choose between experimenting on a whole organism versus cell cultures. What is the main advantage of studying the whole organism?",
-      "answers": ["See interactions between systems", "More realistic/natural conditions", "Observe behavior", "Study complex processes", "See homeostasis in action"],
-      "points": [35, 30, 15, 12, 8]
+      "q": "We surveyed 100 students: Name a basic part that all cells have",
+      "answers": ["Cell membrane", "DNA", "Cytoplasm", "Genetic material"],
+      "points": [40, 35, 20, 5]
     },
     {
-      "q": "What process do ALL living things perform to convert nutrients into usable energy?",
-      "answers": ["Cellular respiration", "Metabolism", "Breaking chemical bonds", "ATP production", "Glycolysis"],
+      "q": "Name something cells need to survive",
+      "answers": ["Energy", "Water", "Food", "Nutrients", "Oxygen"],
+      "points": [30, 28, 22, 15, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name a type of cell in your body",
+      "answers": ["Blood cells", "Skin cells", "Muscle cells", "Nerve cells", "Brain cells"],
+      "points": [30, 28, 22, 15, 5]
+    },
+    {
+      "q": "Name what cells do to make more cells",
+      "answers": ["Divide", "Split", "Reproduce", "Multiply", "Copy themselves"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name a living thing made of just ONE cell",
+      "answers": ["Bacteria", "Amoeba", "Paramecium", "Yeast", "Algae"],
       "points": [45, 25, 15, 10, 5]
     },
     {
-      "q": "In a controlled experiment, you change the temperature while studying enzyme activity. Everything else stays the same. What do we call the factors that stay the same?",
-      "answers": ["Constants/controlled variables", "Independent variable", "Control group", "Dependent variable", "Experimental conditions"],
-      "points": [50, 20, 15, 10, 5]
+      "q": "Name what surrounds and protects a cell",
+      "answers": ["Cell membrane", "Cell wall", "Outer layer", "Barrier", "Skin of cell"],
+      "points": [45, 30, 15, 8, 2]
     },
     {
-      "q": "A hypothesis states 'If plants receive more sunlight, then they will grow taller.' What type of variable is 'plant height'?",
-      "answers": ["Dependent variable", "Independent variable", "Controlled variable", "Measured variable", "Response variable"],
-      "points": [40, 25, 15, 12, 8]
+      "q": "We surveyed 100 students: Name where you find the instructions for how a cell works",
+      "answers": ["DNA", "Nucleus", "Genes", "Genetic material", "Chromosomes"],
+      "points": [40, 30, 18, 10, 2]
     },
     {
-      "q": "What characteristic of life explains why you sweat when you're hot and shiver when you're cold?",
-      "answers": ["Homeostasis", "Response to stimuli", "Regulation", "Adaptation", "Metabolism"],
-      "points": [45, 25, 15, 10, 5]
-    },
-    {
-      "q": "When organizing life from smallest to largest, what comes after organism?",
-      "answers": ["Population", "Community", "Species", "Ecosystem", "Organ system"],
-      "points": [40, 25, 18, 12, 5]
-    },
-    {
-      "q": "What fundamental unit of life was discovered by Robert Hooke when examining cork under a microscope?",
-      "answers": ["Cell", "Nucleus", "Cell wall", "Tissue", "Cell membrane"],
-      "points": [50, 20, 15, 10, 5]
-    },
-    {
-      "q": "A theory in science is best described as what?",
-      "answers": ["Well-tested explanation", "Supported by evidence", "Can be modified with new data", "Broader than a hypothesis", "Based on many experiments"],
+      "q": "Name something cells produce or make",
+      "answers": ["Energy", "Proteins", "Waste", "New cells", "Materials"],
       "points": [35, 30, 20, 10, 5]
     },
     {
-      "q": "What tool would give you the highest magnification when observing bacteria?",
-      "answers": ["Electron microscope", "Compound microscope", "Light microscope", "Scanning microscope", "Transmission microscope"],
-      "points": [45, 25, 15, 10, 5]
+      "q": "We surveyed 100 students: Name a difference between plant and animal cells",
+      "answers": ["Cell wall", "Chloroplasts", "Shape", "Color", "Size"],
+      "points": [40, 35, 15, 8, 2]
     },
     {
-      "q": "All living things must have what chemical element as the backbone of their molecules?",
-      "answers": ["Carbon", "Oxygen", "Hydrogen", "Nitrogen", "Phosphorus"],
-      "points": [50, 20, 15, 10, 5]
+      "q": "Name what plant cells have that animal cells don't",
+      "answers": ["Cell wall", "Chloroplasts", "Green color", "Hard outer layer"],
+      "points": [45, 40, 10, 5]
     },
     {
-      "q": "What is the basic unit that makes up all living things according to Cell Theory?",
-      "answers": ["Cell", "Atom", "Molecule", "Tissue", "Organism"],
-      "points": [55, 20, 12, 8, 5]
-    },
-    {
-      "q": "When making observations in an experiment, what type uses measurements and numbers?",
-      "answers": ["Quantitative", "Qualitative", "Descriptive", "Numerical", "Objective"],
-      "points": [45, 30, 12, 8, 5]
-    },
-    {
-      "q": "What process allows species to change over time and become better suited to their environment?",
-      "answers": ["Evolution", "Natural selection", "Adaptation", "Mutation", "Survival of fittest"],
-      "points": [40, 30, 15, 10, 5]
-    }
-  ],
-  "Biochemistry": [
-    {
-      "q": "An ionic bond forms between two atoms. What is the fundamental process that occurs with their electrons?",
-      "answers": ["Transfer of electrons", "One atom loses, one gains electrons", "Electron donation/acceptance", "Forming charged ions", "Creating opposite charges"],
-      "points": [45, 25, 15, 10, 5]
-    },
-    {
-      "q": "A student tests a food sample. Biuret test turns purple and Sudan IV turns red, but Benedict's and iodine tests are negative. Which macromolecules are present?",
-      "answers": ["Proteins and lipids", "Lipids and proteins", "Protein and fat", "No carbohydrates present", "Two macromolecules detected"],
-      "points": [50, 25, 15, 8, 2]
-    },
-    {
-      "q": "What describes the primary structure of a protein?",
-      "answers": ["Sequence of amino acids", "Order of amino acids", "Linear chain of amino acids", "Amino acid sequence", "Peptide bond connections"],
-      "points": [45, 25, 15, 10, 5]
-    },
-    {
-      "q": "Water molecules stick together due to hydrogen bonding. What property does this create that helps plants transport water?",
-      "answers": ["Cohesion", "Adhesion", "Surface tension", "Capillary action", "High surface tension"],
-      "points": [40, 30, 15, 10, 5]
-    },
-    {
-      "q": "An enzyme's function is destroyed when exposed to high heat. What specifically has been altered?",
-      "answers": ["Shape/3D structure", "Active site", "Protein structure denatured", "Tertiary structure", "Conformation"],
+      "q": "We surveyed 100 students: Name why cells are important",
+      "answers": ["Make up living things", "Basic unit of life", "Keep us alive", "Do all body functions", "Build organisms"],
       "points": [35, 30, 20, 10, 5]
     },
     {
-      "q": "Carbon can form 4 covalent bonds. What property of carbon allows this?",
-      "answers": ["4 valence electrons", "Outer shell electrons", "Electron configuration", "Can share 4 electrons", "Tetravalent"],
-      "points": [45, 25, 15, 10, 5]
+      "q": "Name something inside a cell",
+      "answers": ["Nucleus", "Cytoplasm", "DNA", "Organelles", "Fluid", "Parts"],
+      "points": [30, 25, 20, 15, 8, 2]
     },
     {
-      "q": "A solution has a pH of 3. What is the concentration of H+ ions compared to a pH of 6?",
-      "answers": ["1000 times more/higher", "More acidic", "Higher H+ concentration", "More hydrogen ions", "103 times more"],
-      "points": [40, 25, 20, 10, 5]
+      "q": "We surveyed 100 students: Name what cells get from food",
+      "answers": ["Energy", "Nutrients", "Sugar", "Glucose", "Fuel"],
+      "points": [40, 30, 18, 10, 2]
     },
     {
-      "q": "What type of macromolecule is an enzyme?",
-      "answers": ["Protein", "Biological catalyst", "Polypeptide", "Amino acid chain", "Catalyst protein"],
-      "points": [50, 25, 12, 8, 5]
+      "q": "Name a shape cells can be",
+      "answers": ["Round", "Square", "Rectangular", "Oval", "Irregular", "Blob-like"],
+      "points": [30, 25, 20, 15, 8, 2]
     },
     {
-      "q": "Glucose and fructose have the same molecular formula (C6H12O6) but different structures. What term describes their relationship?",
-      "answers": ["Isomers", "Structural isomers", "Same formula different structure", "Monosaccharides", "Simple sugars"],
-      "points": [45, 25, 15, 10, 5]
+      "q": "We surveyed 100 students: Name something cells get rid of",
+      "answers": ["Waste", "Carbon dioxide", "Toxins"],
+      "points": [40, 30, 18]
     },
     {
-      "q": "What bond connects amino acids together in a protein?",
-      "answers": ["Peptide bond", "Covalent bond", "Amino acid bond", "Protein bond", "Dehydration synthesis bond"],
-      "points": [50, 25, 12, 8, 5]
+      "q": "Name where most of the cell's activities happen",
+      "answers": ["Cytoplasm", "Inside the cell", "Cell interior", "Throughout cell"],
+      "points": [50, 30, 15, 5]
     },
     {
-      "q": "A lipid molecule has many C-H bonds and few C-O bonds. What property does this give the molecule?",
-      "answers": ["Hydrophobic/nonpolar", "Doesn't dissolve in water", "Water-repelling", "Fat-soluble", "Insoluble in water"],
-      "points": [40, 30, 15, 10, 5]
+      "q": "We surveyed 100 students: Name what makes plant cells green",
+      "answers": ["Chlorophyll", "Chloroplasts", "Green pigment", "Color in chloroplasts"],
+      "points": [45, 35, 15, 5]
     },
     {
-      "q": "What process breaks down polymers into monomers by adding water?",
-      "answers": ["Hydrolysis", "Breaking with water", "Digestion", "Catabolic reaction", "Water-splitting"],
-      "points": [50, 25, 15, 8, 2]
+      "q": "Name what cells use energy for",
+      "answers": ["Growth", "Movement", "Making things", "Staying alive", "All activities", "Functioning"],
+      "points": [28, 25, 22, 15, 8, 2]
     },
     {
-      "q": "DNA and RNA are examples of which type of macromolecule?",
-      "answers": ["Nucleic acids", "Polynucleotides", "Genetic material", "Information molecules", "Nucleotide polymers"],
-      "points": [55, 25, 10, 7, 3]
+      "q": "We surveyed 100 students: Name the control center of the cell",
+      "answers": ["Nucleus", "Brain of cell", "DNA", "Control room"],
+      "points": [60, 25, 10, 5]
     },
     {
-      "q": "Saturated fats have no double bonds between carbons. What state are they typically in at room temperature?",
-      "answers": ["Solid", "Fat", "Butter-like", "Hard/firm", "Not liquid"],
-      "points": [50, 25, 12, 8, 5]
+      "q": "Name a job that cells do",
+      "answers": ["Make energy", "Grow", "Divide", "Remove waste", "Make proteins", "Function"],
+      "points": [28, 25, 22, 15, 8, 2]
     },
     {
-      "q": "What happens to reaction rate when you increase enzyme concentration (assuming excess substrate)?",
-      "answers": ["Increases", "Reaction speeds up", "More product formed faster", "Direct relationship", "Gets faster"],
-      "points": [45, 30, 15, 7, 3]
+      "q": "We surveyed 100 students: Name why we can't see most cells with our eyes",
+      "answers": ["Too small", "Microscopic", "Tiny", "Need microscope"],
+      "points": [50, 30, 15, 5]
+    },
+    {
+      "q": "Name what water does for cells",
+      "answers": ["Keeps them alive", "Helps them function", "Fills them up", "Hydrates", "Dissolves things"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name how many cells are in your body",
+      "answers": ["Trillions", "Billions", "Millions", "A lot", "Countless"],
+      "points": [45, 30, 15, 8, 2]
+    },
+    {
+      "q": "Name what cells are called when they work together",
+      "answers": ["Tissue", "Organs", "Systems", "Groups", "Teams"],
+      "points": [45, 30, 15, 8, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name something that can damage cells",
+      "answers": ["Heat", "Cold", "Toxins", "Lack of water", "Chemicals", "Injury"],
+      "points": [25, 23, 20, 17, 10, 5]
+    },
+    {
+      "q": "Name a scientist who studied cells",
+      "answers": ["Robert Hooke", "Anton van Leeuwenhoek", "Biologist", "Scientist"],
+      "points": [45, 35, 15, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name what cells need from the air",
+      "answers": ["Oxygen", "Air", "Gas", "Breath"],
+      "points": [60, 25, 10, 5]
+    },
+    {
+      "q": "Name an organism made of many cells",
+      "answers": ["Humans", "Animals", "Plants", "Dogs", "Trees", "People"],
+      "points": [30, 28, 22, 12, 6, 2]
     }
   ],
   "Cells & Cell Energy": [
     {
-      "q": "What cellular structure is found in plant cells but NOT in animal cells?",
-      "answers": ["Cell wall", "Chloroplasts", "Large central vacuole", "Plastids", "Rectangular shape"],
-      "points": [35, 35, 20, 7, 3]
+      "q": "We surveyed 100 biology students: Name a stage of cellular respiration",
+      "answers": ["Glycolysis", "Krebs cycle", "Electron transport chain", "Citric acid cycle", "Oxidative phosphorylation"],
+      "points": [35, 30, 25, 8, 2]
     },
     {
-      "q": "During cellular respiration, where in the cell is the majority of ATP produced?",
-      "answers": ["Mitochondria", "Inner mitochondrial membrane", "Cristae", "Electron transport chain location", "Matrix and cristae"],
-      "points": [45, 25, 15, 10, 5]
+      "q": "Name something that happens inside mitochondria",
+      "answers": ["Krebs cycle", "Electron transport chain", "ATP production", "Cellular respiration", "Energy generation"],
+      "points": [30, 28, 25, 12, 5]
     },
     {
-      "q": "A cell is placed in a solution and swells until it bursts. What type of solution was it placed in?",
-      "answers": ["Hypotonic", "Less solute than cell", "Water moved in", "Lower concentration outside", "Dilute solution"],
-      "points": [50, 25, 15, 8, 2]
+      "q": "We surveyed 100 students: Name something chloroplasts do",
+      "answers": ["Photosynthesis", "Make glucose", "Produce oxygen", "Convert light energy", "Make food for plant"],
+      "points": [40, 25, 20, 10, 5]
     },
     {
-      "q": "What is the final electron acceptor in aerobic cellular respiration?",
-      "answers": ["Oxygen", "O2", "Molecular oxygen", "Creates water with electrons", "Accepts electrons at end"],
-      "points": [55, 25, 12, 5, 3]
+      "q": "Name an organelle involved in making proteins",
+      "answers": ["Ribosome", "Rough ER", "Golgi apparatus", "Nucleolus", "Endoplasmic reticulum"],
+      "points": [35, 30, 20, 10, 5]
     },
     {
-      "q": "The cell membrane is described as a 'fluid mosaic model.' What makes it 'fluid'?",
-      "answers": ["Phospholipids can move", "Molecules move laterally", "Flexible/not rigid", "Components move around", "Lipids flow"],
-      "points": [40, 30, 15, 10, 5]
+      "q": "We surveyed 100 students: Name something cells produce during cellular respiration",
+      "answers": ["ATP", "Energy", "Carbon dioxide", "Water", "Heat"],
+      "points": [40, 30, 20, 8, 2]
     },
     {
-      "q": "Which organelle contains its own DNA and is thought to have originated from bacteria?",
-      "answers": ["Mitochondria", "Chloroplasts", "Both mitochondria and chloroplasts", "Endosymbiotic organelles", "Semi-autonomous organelles"],
-      "points": [45, 30, 15, 7, 3]
+      "q": "Name a type of cellular transport",
+      "answers": ["Diffusion", "Osmosis", "Active transport", "Facilitated diffusion", "Endocytosis", "Exocytosis"],
+      "points": [30, 28, 25, 10, 5, 2]
     },
     {
-      "q": "In glycolysis, one glucose molecule is broken down into what product?",
-      "answers": ["2 pyruvate", "Pyruvic acid", "2 three-carbon molecules", "2 pyruvate and 2 ATP", "Two pyruvate molecules"],
+      "q": "We surveyed 100 students: Name something cells need for aerobic respiration",
+      "answers": ["Oxygen", "Glucose", "Mitochondria", "Enzymes", "Water"],
+      "points": [35, 35, 15, 10, 5]
+    },
+    {
+      "q": "Name a part of the mitochondria",
+      "answers": ["Matrix", "Cristae", "Inner membrane", "Outer membrane", "Intermembrane space"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name a function of the cell membrane",
+      "answers": ["Controls what enters and exits", "Protects cell", "Cell communication", "Provides shape", "Selective permeability"],
+      "points": [35, 25, 20, 12, 8]
+    },
+    {
+      "q": "Name a structure inside chloroplasts",
+      "answers": ["Thylakoid", "Grana", "Stroma", "Thylakoid membrane", "Chlorophyll"],
+      "points": [30, 28, 25, 12, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name something produced during glycolysis",
+      "answers": ["Pyruvate", "ATP", "NADH", "Energy", "2 pyruvate molecules"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "Name a pigment or molecule in chloroplasts",
+      "answers": ["Chlorophyll", "Carotenoids", "Chlorophyll a", "Chlorophyll b", "Green pigment"],
+      "points": [45, 20, 18, 12, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name a way substances move across membranes",
+      "answers": ["Diffusion", "Osmosis", "Active transport", "Protein channels", "Passive transport"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name what happens to cells in different solutions",
+      "answers": ["Shrink", "Swell", "Burst", "Stay same", "Lose water", "Gain water"],
+      "points": [25, 25, 20, 15, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name a part of the chloroplast",
+      "answers": ["Stroma", "Thylakoid", "Grana", "Membrane", "Chlorophyll"],
+      "points": [30, 28, 22, 15, 5]
+    },
+    {
+      "q": "Name an energy molecule used by cells",
+      "answers": ["ATP", "Glucose", "NADH", "FADH2", "Sugar"],
       "points": [45, 30, 15, 8, 2]
     },
     {
-      "q": "What type of transport requires energy (ATP) to move substances across a membrane?",
-      "answers": ["Active transport", "Pumps", "Endocytosis/exocytosis", "Against concentration gradient", "Sodium-potassium pump"],
-      "points": [50, 25, 15, 7, 3]
+      "q": "We surveyed 100 students: Name what happens when cells don't have oxygen",
+      "answers": ["Fermentation", "Anaerobic respiration", "Make lactic acid", "Less ATP made", "Switch to glycolysis only"],
+      "points": [35, 30, 20, 10, 5]
     },
     {
-      "q": "Prokaryotic cells lack what membrane-bound structure that eukaryotic cells have?",
-      "answers": ["Nucleus", "Membrane-bound organelles", "Nuclear envelope", "True nucleus", "Organelles"],
-      "points": [45, 30, 15, 7, 3]
+      "q": "Name something that moves during the electron transport chain",
+      "answers": ["Electrons", "Protons", "Hydrogen ions", "Energy", "H+"],
+      "points": [40, 30, 20, 8, 2]
     },
     {
-      "q": "What is the net ATP production from one glucose molecule going through glycolysis only?",
-      "answers": ["2 ATP", "Two ATP net", "4 produced 2 used", "Net gain of 2", "2 ATP net gain"],
-      "points": [50, 25, 15, 7, 3]
-    },
-    {
-      "q": "Which organelle is responsible for packaging and modifying proteins for export?",
-      "answers": ["Golgi apparatus", "Golgi body", "Golgi complex", "Post office of cell", "Shipping organelle"],
-      "points": [55, 25, 12, 5, 3]
-    },
-    {
-      "q": "When oxygen is absent, what process can cells use to regenerate NAD+ and continue making ATP?",
-      "answers": ["Fermentation", "Anaerobic respiration", "Lactic acid fermentation", "Alcohol fermentation", "Anaerobic process"],
-      "points": [45, 30, 15, 7, 3]
-    },
-    {
-      "q": "What structure controls what enters and exits the cell?",
-      "answers": ["Cell membrane", "Plasma membrane", "Phospholipid bilayer", "Selectively permeable membrane", "Cell boundary"],
-      "points": [50, 30, 12, 5, 3]
-    },
-    {
-      "q": "In what part of the mitochondria does the Krebs cycle occur?",
-      "answers": ["Matrix", "Mitochondrial matrix", "Inner space", "Inside inner membrane", "Central area"],
-      "points": [55, 25, 12, 5, 3]
-    },
-    {
-      "q": "A cell with a damaged lysosome would have trouble doing what?",
-      "answers": ["Breaking down materials", "Digestion", "Waste removal", "Recycling organelles", "Autophagy"],
+      "q": "We surveyed 100 students: Name an organelle that processes proteins",
+      "answers": ["Golgi apparatus", "Rough ER", "Ribosome", "Endoplasmic reticulum", "Golgi body"],
       "points": [40, 30, 15, 10, 5]
+    },
+    {
+      "q": "Name what happens to glucose during cellular respiration",
+      "answers": ["Broken down", "Split into pyruvate", "Oxidized", "Releases energy", "Makes ATP"],
+      "points": [35, 30, 18, 12, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name an electron carrier in cellular respiration",
+      "answers": ["NADH", "FADH2", "NAD+", "FAD", "Electron carriers"],
+      "points": [40, 35, 15, 8, 2]
+    },
+    {
+      "q": "Name a type of protein in cell membranes",
+      "answers": ["Channel proteins", "Carrier proteins", "Receptor proteins", "Transport proteins", "Aquaporins"],
+      "points": [30, 28, 22, 15, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name something that happens when ATP is made",
+      "answers": ["Energy released", "Protons flow through ATP synthase", "ADP becomes ATP", "Phosphate added", "Chemiosmosis"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name something used during photosynthesis",
+      "answers": ["Carbon dioxide", "Water", "Sunlight", "Chlorophyll", "Light energy"],
+      "points": [30, 28, 25, 12, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name a difference between aerobic and anaerobic respiration",
+      "answers": ["Oxygen needed", "More ATP vs less", "Location different", "Products different", "Speed different"],
+      "points": [40, 30, 15, 10, 5]
+    },
+    {
+      "q": "Name something produced during photosynthesis",
+      "answers": ["Oxygen", "Glucose", "Sugar", "ATP", "NADPH"],
+      "points": [35, 35, 18, 10, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name why plant cells stay rigid",
+      "answers": ["Turgor pressure", "Cell wall", "Water pressure", "Central vacuole", "Water inside"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name where glucose is broken down in the cell",
+      "answers": ["Cytoplasm", "Mitochondria", "Glycolysis in cytoplasm", "Matrix", "Throughout cell"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name a type of cell that has a cell wall",
+      "answers": ["Plant cells", "Bacteria", "Fungi", "Prokaryotes", "Algae"],
+      "points": [40, 28, 20, 10, 2]
+    },
+    {
+      "q": "Name a way cells take in large particles",
+      "answers": ["Endocytosis", "Phagocytosis", "Pinocytosis", "Engulfing", "Active transport"],
+      "points": [35, 30, 20, 10, 5]
+    }
+  ],
+  "Cell Structure & Theory": [
+    {
+      "q": "We surveyed 100 biology students: Name a principle of Cell Theory",
+      "answers": ["All organisms are made of cells", "Cells are basic unit of life", "All cells come from other cells", "Cells are the building blocks", "Cells divide"],
+      "points": [35, 30, 25, 8, 2]
+    },
+    {
+      "q": "Name a difference between prokaryotic and eukaryotic cells",
+      "answers": ["Nucleus present or not", "Size difference", "Membrane-bound organelles", "DNA organization", "Complexity"],
+      "points": [40, 25, 20, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name an organelle that produces energy",
+      "answers": ["Mitochondria", "Chloroplast", "Powerhouse of cell"],
+      "points": [55, 35, 10]
+    },
+    {
+      "q": "Name an organelle ONLY found in eukaryotic cells",
+      "answers": ["Nucleus", "Mitochondria", "ER", "Golgi apparatus", "Lysosomes", "Vacuoles"],
+      "points": [35, 25, 15, 12, 8, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name what the nuclear envelope does",
+      "answers": ["Protects DNA", "Controls what enters", "Surrounds nucleus", "Double membrane barrier", "Keeps DNA safe"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name where ribosomes are made",
+      "answers": ["Nucleolus", "Nucleus", "Inside nucleus"],
+      "points": [60, 25, 15]
+    },
+    {
+      "q": "We surveyed 100 students: Name a type of endoplasmic reticulum",
+      "answers": ["Rough ER", "Smooth ER", "Rough", "Smooth"],
+      "points": [45, 45, 5, 5]
+    },
+    {
+      "q": "Name what makes rough ER different from smooth ER",
+      "answers": ["Has ribosomes", "Bumpy surface", "Makes proteins", "Ribosomes attached", "Textured"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name something smooth ER does",
+      "answers": ["Makes lipids", "Detoxification", "Stores calcium", "Makes fats", "Metabolizes substances"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name an organelle that breaks things down",
+      "answers": ["Lysosome", "Peroxisome", "Vacuole", "Digestive organelle"],
+      "points": [50, 25, 15, 10]
+    },
+    {
+      "q": "We surveyed 100 students: Name what gives plant cells their shape",
+      "answers": ["Cell wall", "Rigid structure", "Cellulose wall", "Hard outer layer"],
+      "points": [55, 25, 15, 5]
+    },
+    {
+      "q": "Name something stored in the central vacuole",
+      "answers": ["Water", "Nutrients", "Waste", "Pigments", "Ions", "Salts"],
+      "points": [35, 25, 18, 12, 8, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name an organelle involved in the endosymbiotic theory",
+      "answers": ["Mitochondria", "Chloroplasts", "Both"],
+      "points": [45, 45, 10]
+    },
+    {
+      "q": "Name evidence for the endosymbiotic theory",
+      "answers": ["Own DNA", "Double membrane", "Own ribosomes", "Similar to bacteria", "Reproduce independently", "Circular DNA"],
+      "points": [30, 28, 20, 12, 8, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name what the cytoskeleton does",
+      "answers": ["Supports cell", "Gives shape", "Helps movement", "Transports organelles", "Cell division"],
+      "points": [35, 30, 18, 12, 5]
+    },
+    {
+      "q": "Name a part of the cytoskeleton",
+      "answers": ["Microtubules", "Microfilaments", "Intermediate filaments", "Actin", "Protein fibers"],
+      "points": [35, 35, 20, 8, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name what centrioles help with",
+      "answers": ["Cell division", "Make spindle fibers", "Organize microtubules", "Mitosis", "Separate chromosomes"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name what cilia or flagella do",
+      "answers": ["Movement", "Locomotion", "Move substances", "Swimming", "Propel cell"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name what the fluid mosaic model describes",
+      "answers": ["Cell membrane", "Membrane structure", "Plasma membrane", "How membrane works"],
+      "points": [45, 30, 20, 5]
+    },
+    {
+      "q": "Name something in the cell membrane",
+      "answers": ["Phospholipids", "Proteins", "Cholesterol", "Lipid bilayer", "Carbohydrates"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name what selectively permeable means",
+      "answers": ["Allows some things through", "Controls what enters", "Chooses what passes", "Semi-permeable", "Selective barrier"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "Name a type of cell junction",
+      "answers": ["Tight junctions", "Gap junctions", "Desmosomes", "Adhesion junctions"],
+      "points": [40, 30, 20, 10]
+    },
+    {
+      "q": "We surveyed 100 students: Name an organelle that makes proteins",
+      "answers": ["Ribosome", "Rough ER", "ER", "Nucleolus"],
+      "points": [45, 35, 15, 5]
+    },
+    {
+      "q": "Name what the Golgi apparatus does",
+      "answers": ["Packages proteins", "Modifies proteins", "Ships proteins", "Processes materials", "Post office of cell"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name what the Golgi is made of",
+      "answers": ["Stacks", "Membrane sacs", "Cisternae", "Flattened membranes", "Layers"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "Name something peroxisomes break down",
+      "answers": ["Fatty acids", "Hydrogen peroxide", "Toxins", "Fats", "Harmful substances"],
+      "points": [35, 30, 20, 10, 5]
+    },
+    {
+      "q": "We surveyed 100 students: Name what chromatin is made of",
+      "answers": ["DNA and proteins", "DNA", "Genetic material", "Chromosomes", "Histones"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "Name what chromosomes contain",
+      "answers": ["DNA", "Genes", "Genetic information", "Hereditary material", "Instructions"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "We surveyed 100 students: Name what nuclear pores do",
+      "answers": ["Allow things in and out", "Transport materials", "Let RNA out", "Control traffic", "Regulate exchange"],
+      "points": [40, 30, 18, 10, 2]
+    },
+    {
+      "q": "Name an organelle in the endomembrane system",
+      "answers": ["ER", "Golgi apparatus", "Lysosomes", "Vesicles", "Nuclear envelope", "Vacuoles"],
+      "points": [30, 28, 20, 12, 8, 2]
     }
   ]
 }
