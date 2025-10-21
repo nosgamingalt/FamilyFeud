@@ -51,7 +51,7 @@ npm run dev
 ## 🎓 Teacher Mode
 
 - Click the "Teacher Mode" button in the header
-- Enter password: `biology2025`
+- Enter password: `biorocks`
 - All answers will be displayed with yellow borders
 - Perfect for reviewing questions before class or checking answers quickly
 
