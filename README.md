@@ -1,16 +1,102 @@
-# React + Vite
+# Biology Family Feud 🧬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive Family Feud-style game designed for 9th-10th grade biology students, focusing on cell biology topics.
 
-Currently, two official plugins are available:
+## 🎮 Game Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **3 Categories** with 90 total questions:
+  - **Introduction to Cells** (30 questions) - Easy difficulty for students just starting the cells unit
+  - **Cells & Cell Energy** (30 questions) - Medium difficulty covering cellular respiration, photosynthesis, and ATP
+  - **Cell Structure & Theory** (30 questions) - Medium difficulty covering organelles, cell theory, and cellular organization
 
-## React Compiler
+- **Teacher Mode**: Password-protected view to see all answers (Password: `biology2025`)
+- **Strike System**: Traditional Family Feud 3-strike gameplay
+- **Multiple Answers**: Each question has 2-7 possible answers with point values
+- **Random Question Order**: Questions shuffle automatically for variety
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js installed on your computer
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/nosgamingalt/FamilyFeud.git
+cd FamilyFeud
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser to `http://localhost:5173`
+
+## 📝 How to Play
+
+1. Select a category from the dropdown menu
+2. Read the question to your class
+3. Students provide answers
+4. Click on answers to reveal them (or use Teacher Mode to see all answers)
+5. Wrong answers add strikes (X marks)
+6. Game ends after 3 strikes or when all answers are revealed
+
+## 🎓 Teacher Mode
+
+- Click the "Teacher Mode" button in the header
+- Enter password: `biology2025`
+- All answers will be displayed with yellow borders
+- Perfect for reviewing questions before class or checking answers quickly
+
+## 🛠️ Built With
+
+- **React** - UI framework
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+
+## 📦 Deployment
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Deploy to Netlify
+1. Build the project (see above)
+2. Drag and drop the `dist` folder to [Netlify Drop](https://app.netlify.com/drop)
+3. Or connect your GitHub repository for automatic deployments
+
+**Build Settings for Netlify:**
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+## 📚 Customizing Questions
+
+Edit the `public/questions.json` file to add or modify questions. Each question follows this format:
+
+```json
+{
+  "q": "Question text here",
+  "answers": ["Answer 1", "Answer 2", "Answer 3"],
+  "points": [40, 35, 25]
+}
+```
+
+## 🔒 Changing Teacher Mode Password
+
+Edit line 18 in `src/App.jsx`:
+```javascript
+const TEACHER_PASSWORD = 'your-new-password';
+```
+
+## 📄 License
+
+This project is open source and available for educational use.
