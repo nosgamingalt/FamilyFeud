@@ -9,7 +9,7 @@ An interactive Family Feud-style game designed for 9th-10th grade biology studen
   - **Cells & Cell Energy** (30 questions) - Medium difficulty covering cellular respiration, photosynthesis, and ATP
   - **Cell Structure & Theory** (30 questions) - Medium difficulty covering organelles, cell theory, and cellular organization
 
-- **Teacher Mode**: Password-protected view to see all answers (Password: `biology2025`)
+- **Teacher Mode**: Password-protected view to see all answers (Password: `biorocks`)
 - **Strike System**: Traditional Family Feud 3-strike gameplay
 - **Multiple Answers**: Each question has 2-7 possible answers with point values
 - **Random Question Order**: Questions shuffle automatically for variety
