@@ -168,5 +168,3 @@ const TEACHER_PASSWORD = 'your-new-password';
 ## 📄 License
 
 This project is open source and available for educational use. Feel free to modify and adapt it for your classroom!
-
-This project is open source and available for educational use.
