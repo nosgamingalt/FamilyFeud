@@ -12,7 +12,6 @@ const BioFamilyFeud = () => {
   const [score, setScore] = useState({ team1: 0, team2: 0 });
   const [strikes, setStrikes] = useState(0);
   const [currentTeam, setCurrentTeam] = useState(1);
-  const [showQuestion, setShowQuestion] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [timerActive, setTimerActive] = useState(false);
 
@@ -53,7 +52,6 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(0);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(false);
       setTimerActive(false);
       setTimeLeft(30);
       setCurrentTeam(1);
@@ -86,13 +84,21 @@ const BioFamilyFeud = () => {
 
   const revealAnswer = (index) => {
     if (!revealed.includes(index)) {
+      // Show the answer and add points
       setRevealed([...revealed, index]);
       const team = currentTeam === 1 ? 'team1' : 'team2';
       setScore({ ...score, [team]: score[team] + questionData.points[index] });
+      setTimeLeft(30); // Reset timer to 30 seconds when answer is clicked
+    } else {
+      // Hide the answer and remove points
+      setRevealed(revealed.filter(i => i !== index));
+      const team = currentTeam === 1 ? 'team1' : 'team2';
+      setScore({ ...score, [team]: score[team] - questionData.points[index] });
     }
   };
 
   const addStrike = () => {
+    setTimeLeft(30); // Reset timer when manually adding strike
     if (strikes < 2) {
       // Add strike - no auto-restart
       setStrikes(strikes + 1);
@@ -108,7 +114,6 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(currentQuestion + 1);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(true); // Show question immediately
       setTimerActive(false);
       setTimeLeft(30);
       setCurrentTeam(1);
@@ -120,7 +125,6 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(currentQuestion - 1);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(true); // Show question immediately
       setTimerActive(false);
       setTimeLeft(30);
       setCurrentTeam(1);
@@ -137,7 +141,6 @@ const BioFamilyFeud = () => {
     setRevealed([]);
     setStrikes(0);
     setCurrentTeam(1);
-    setShowQuestion(false);
     setTimerActive(false);
     setTimeLeft(30);
   };
@@ -148,20 +151,10 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(0);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(false);
       setTimerActive(false);
       setTimeLeft(30);
       setCurrentTeam(1);
     }
-  };
-
-  const startTimer = () => {
-    setShowQuestion(true);
-    setTimerActive(true);
-  };
-
-  const stopTimer = () => {
-    setTimerActive(false);
   };
 
   const resetTimer = () => {
@@ -238,20 +231,12 @@ const BioFamilyFeud = () => {
             <span className="text-yellow-400 font-semibold">
               Question {currentQuestion + 1} of {shuffledQuestions.length}
             </span>
-            <div className="flex gap-2">
-              <button
-                onClick={reshuffleQuestions}
-                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
-              >
-                🔀 Reshuffle
-              </button>
-              <button
-                onClick={startTimer}
-                className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 font-bold py-2 px-4 rounded-lg transition"
-              >
-                {showQuestion ? 'Show Question' : 'Show Question'}
-              </button>
-            </div>
+            <button
+              onClick={reshuffleQuestions}
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
+            >
+              🔀 Reshuffle
+            </button>
           </div>
 
           {/* Question Selector Dropdown */}
@@ -263,7 +248,6 @@ const BioFamilyFeud = () => {
                 setCurrentQuestion(Number(e.target.value));
                 setRevealed([]);
                 setStrikes(0);
-                setShowQuestion(true);
                 setTimerActive(false);
                 setTimeLeft(30);
                 setCurrentTeam(1);
@@ -278,24 +262,22 @@ const BioFamilyFeud = () => {
             </select>
           </div>
 
-          {showQuestion && (
-            <>
-              <div className="bg-purple-800 bg-opacity-50 rounded-lg p-4 mb-3">
-                <p className="text-white text-xl font-semibold text-center leading-relaxed">
-                  {questionData.q}
-                </p>
-              </div>
-              
-              {/* Timer Display - Centered */}
-              <div className="flex justify-center mb-3">
-                <div className={`relative w-24 h-24 flex items-center justify-center rounded-full border-6 transition-all ${
-                  timeLeft <= 5 ? 'border-red-500 animate-pulse' : timeLeft <= 10 ? 'border-yellow-500' : 'border-green-500'
+          <div className="bg-purple-800 bg-opacity-50 rounded-lg p-4 mb-3">
+            <p className="text-white text-xl font-semibold text-center leading-relaxed">
+              {questionData.q}
+            </p>
+          </div>
+          
+          {/* Timer Display - Centered */}
+          <div className="flex justify-center mb-3">
+            <div className={`relative w-24 h-24 flex items-center justify-center rounded-full border-6 transition-all ${
+              timeLeft <= 5 ? 'border-red-500 animate-pulse' : timeLeft <= 10 ? 'border-yellow-500' : 'border-green-500'
+            }`}>
+              <div className="text-center">
+                <div className={`text-4xl font-bold ${
+                  timeLeft <= 5 ? 'text-red-400' : timeLeft <= 10 ? 'text-yellow-400' : 'text-green-400'
                 }`}>
-                  <div className="text-center">
-                    <div className={`text-4xl font-bold ${
-                      timeLeft <= 5 ? 'text-red-400' : timeLeft <= 10 ? 'text-yellow-400' : 'text-green-400'
-                    }`}>
-                      {timeLeft}
+                  {timeLeft}
                     </div>
                     <div className="text-white text-xs">seconds</div>
                   </div>
@@ -319,19 +301,24 @@ const BioFamilyFeud = () => {
               <div className="flex justify-center gap-2 mb-3">
                 <button
                   onClick={() => {
-                    setTimeLeft(30);
-                    setTimerActive(true);
+                    if (timerActive) {
+                      // Pause the timer
+                      setTimerActive(false);
+                    } else {
+                      // Start the timer
+                      if (timeLeft === 0) {
+                        setTimeLeft(30);
+                      }
+                      setTimerActive(true);
+                    }
                   }}
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-1.5 px-4 rounded-lg transition text-sm"
+                  className={`${
+                    timerActive 
+                      ? 'bg-orange-500 hover:bg-orange-600' 
+                      : 'bg-green-500 hover:bg-green-600'
+                  } text-white font-bold py-1.5 px-4 rounded-lg transition text-sm`}
                 >
-                  ▶ Start
-                </button>
-                <button
-                  onClick={stopTimer}
-                  disabled={!timerActive}
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-1.5 px-4 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed text-sm"
-                >
-                  ⏸ Pause
+                  {timerActive ? '⏸ Pause' : '▶ Start'}
                 </button>
                 <button
                   onClick={resetTimer}
@@ -340,15 +327,12 @@ const BioFamilyFeud = () => {
                   🔄 Reset
                 </button>
               </div>
-            </>
-          )}
           
           <div className="grid grid-cols-1 gap-2 mb-3">
             {questionData.answers.map((answer, idx) => (
               <button
                 key={idx}
                 onClick={() => revealAnswer(idx)}
-                disabled={revealed.includes(idx)}
                 className={`p-3 rounded-lg text-left transition transform hover:scale-102 ${
                   revealed.includes(idx)
                     ? 'bg-green-600 text-white'
