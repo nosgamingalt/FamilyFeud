@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "cd biology-feud && npm install && npm run build",
+    "dev": "cd biology-feud && npm run dev"
+  },
   "dependencies": {
     "lucide-react": "^0.545.0"
   },
