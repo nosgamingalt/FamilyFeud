@@ -14,6 +14,10 @@ const BioFamilyFeud = () => {
   const [currentTeam, setCurrentTeam] = useState(1);
   const [timeLeft, setTimeLeft] = useState(30);
   const [timerActive, setTimerActive] = useState(false);
+  const [teacherMode, setTeacherMode] = useState(false);
+  const [showTeacherModal, setShowTeacherModal] = useState(false);
+  const [teacherPwdInput, setTeacherPwdInput] = useState('');
+  const [teacherPwdError, setTeacherPwdError] = useState('');
 
   // Load questions from JSON file
   useEffect(() => {
@@ -48,7 +52,8 @@ const BioFamilyFeud = () => {
   // Initialize shuffled questions when topic changes
   useEffect(() => {
     if (currentTopic && questions[currentTopic]) {
-      setShuffledQuestions(shuffleArray(questions[currentTopic]));
+      // If teacher mode is on, show questions in original order; otherwise shuffle
+      setShuffledQuestions(teacherMode ? questions[currentTopic] : shuffleArray(questions[currentTopic]));
       setCurrentQuestion(0);
       setRevealed([]);
       setStrikes(0);
@@ -56,7 +61,7 @@ const BioFamilyFeud = () => {
       setTimeLeft(30);
       setCurrentTeam(1);
     }
-  }, [currentTopic, questions]);
+  }, [currentTopic, questions, teacherMode]);
 
   // Timer effect - Manual only, no auto-restart
   useEffect(() => {
@@ -153,7 +158,9 @@ const BioFamilyFeud = () => {
 
   const reshuffleQuestions = () => {
     if (questions[currentTopic]) {
-      setShuffledQuestions(shuffleArray(questions[currentTopic]));
+      // If teacher mode is enabled, keep original order; otherwise shuffle
+      const list = teacherMode ? questions[currentTopic] : shuffleArray(questions[currentTopic]);
+      setShuffledQuestions(list);
       setCurrentQuestion(0);
       setRevealed([]);
       setStrikes(0);
@@ -161,6 +168,51 @@ const BioFamilyFeud = () => {
       setTimeLeft(30);
       setCurrentTeam(1);
     }
+  };
+
+  const toggleTeacherMode = () => {
+    if (!teacherMode) {
+      // Open modal to enter password
+      setTeacherPwdInput('');
+      setTeacherPwdError('');
+      setShowTeacherModal(true);
+    } else {
+      // disable teacher mode and reshuffle
+      setTeacherMode(false);
+      if (currentTopic && questions[currentTopic]) {
+        setShuffledQuestions(shuffleArray(questions[currentTopic]));
+        setCurrentQuestion(0);
+        setRevealed([]);
+        setStrikes(0);
+        setTimerActive(false);
+        setTimeLeft(30);
+        setCurrentTeam(1);
+      }
+    }
+  };
+
+  const confirmTeacherPassword = () => {
+    if (teacherPwdInput === 'biorocks') {
+      setTeacherMode(true);
+      setShowTeacherModal(false);
+      if (currentTopic && questions[currentTopic]) {
+        setShuffledQuestions(questions[currentTopic]);
+        setCurrentQuestion(0);
+        setRevealed([]);
+        setStrikes(0);
+        setTimerActive(false);
+        setTimeLeft(30);
+        setCurrentTeam(1);
+      }
+    } else {
+      setTeacherPwdError('Incorrect password');
+    }
+  };
+
+  const cancelTeacherModal = () => {
+    setShowTeacherModal(false);
+    setTeacherPwdInput('');
+    setTeacherPwdError('');
   };
 
   const resetTimer = () => {
@@ -199,6 +251,27 @@ const BioFamilyFeud = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 p-3">
       <div className="max-w-7xl mx-auto">
+        {showTeacherModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 w-full max-w-sm">
+              <h3 className="text-lg font-bold mb-2">Enter Teacher Password</h3>
+              <input
+                type="password"
+                value={teacherPwdInput}
+                onChange={(e) => setTeacherPwdInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') confirmTeacherPassword(); }}
+                className="w-full p-2 mb-2 border rounded"
+                placeholder="Password"
+                autoFocus
+              />
+              {teacherPwdError && <div className="text-red-600 text-sm mb-2">{teacherPwdError}</div>}
+              <div className="flex justify-end gap-2">
+                <button onClick={cancelTeacherModal} className="px-3 py-1 bg-gray-300 rounded">Cancel</button>
+                <button onClick={confirmTeacherPassword} className="px-3 py-1 bg-yellow-600 text-white rounded">Unlock</button>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="text-center mb-4">
           <h1 className="text-4xl font-bold text-yellow-400 mb-1" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.5)' }}>
             BIOLOGY FEUD
@@ -237,12 +310,21 @@ const BioFamilyFeud = () => {
             <span className="text-yellow-400 font-semibold">
               Question {currentQuestion + 1} of {shuffledQuestions.length}
             </span>
-            <button
-              onClick={reshuffleQuestions}
-              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
-            >
-              🔀 Reshuffle
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={reshuffleQuestions}
+                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
+              >
+                🔀 Reshuffle
+              </button>
+              <button
+                onClick={toggleTeacherMode}
+                className={`bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-3 rounded-lg transition text-sm ${teacherMode ? 'ring-2 ring-white' : ''}`}
+                title="Teacher mode: enter password to view all questions in order"
+              >
+                🧑‍🏫 {teacherMode ? 'Teacher ON' : 'Teacher Mode'}
+              </button>
+            </div>
           </div>
 
           {/* Question Selector Dropdown */}
@@ -335,32 +417,36 @@ const BioFamilyFeud = () => {
               </div>
           
           <div className="grid grid-cols-1 gap-2 mb-3">
-            {questionData.answers.map((answer, idx) => (
-              <button
-                key={idx}
-                onClick={() => revealAnswer(idx)}
-                className={`p-3 rounded-lg text-left transition transform hover:scale-102 ${
-                  revealed.includes(idx)
-                    ? 'bg-green-600 text-white'
-                    : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30'
-                }`}
-              >
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl font-bold w-6">{idx + 1}</span>
-                    <span className="text-lg font-semibold">
-                      {revealed.includes(idx) ? answer : '???'}
-                    </span>
-                  </div>
-                  {revealed.includes(idx) && (
-                    <div className="flex items-center gap-2">
-                      <Check className="w-5 h-5" />
-                      <span className="text-xl font-bold">{questionData.points[idx]}</span>
+            {questionData.answers.map((answer, idx) => {
+              const visible = teacherMode || revealed.includes(idx);
+              return (
+                <button
+                  key={idx}
+                  onClick={() => revealAnswer(idx)}
+                  disabled={teacherMode}
+                  className={`p-3 rounded-lg text-left transition transform hover:scale-102 ${
+                    visible
+                      ? 'bg-green-600 text-white'
+                      : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30'
+                  } ${teacherMode ? 'opacity-90 cursor-not-allowed' : ''}`}
+                >
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl font-bold w-6">{idx + 1}</span>
+                      <span className="text-lg font-semibold">
+                        {visible ? answer : '???'}
+                      </span>
                     </div>
-                  )}
-                </div>
-              </button>
-            ))}
+                    {visible && (
+                      <div className="flex items-center gap-2">
+                        <Check className="w-5 h-5" />
+                        <span className="text-xl font-bold">{questionData.points[idx]}</span>
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-2">

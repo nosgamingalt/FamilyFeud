@@ -3,7 +3,7 @@
     {
       "q": "Out of 100 students surveyed, name a major organelle or structure found inside a eukaryotic cell.",
       "answers": ["Nucleus", "Mitochondria", "Endoplasmic reticulum", "Golgi apparatus", "Ribosome", "Lysosome", "Vacuole"],
-      "points": [35, 30, 25, 8, 2, 0, 0]
+      "points": [30, 25, 20, 12, 7, 4, 2]
     },
     {
       "q": "Name an organelle involved in making proteins",
@@ -13,12 +13,12 @@
     {
       "q": "We surveyed 100 students: Name something cells produce during cellular respiration",
       "answers": ["ATP", "Energy", "Carbon dioxide", "Water", "Heat"],
-      "points": [40, 30, 20, 8, 2]
+      "points": [35, 30, 20, 10, 5]
     },
     {
       "q": "Name a type of cellular transport",
       "answers": ["Passive transport", "Active transport", "Facilitated diffusion", "Endocytosis", "Exocytosis"],
-      "points": [30, 28, 25, 10, 5]
+      "points": [30, 28, 25, 12, 5]
     },
     {
       "q": "Out of 100 students surveyed, name a common sugar or a class of sugar molecules",
@@ -38,7 +38,7 @@
     {
       "q": "Out of 100 students surveyed, name a term associated with the movement of substances across a cell membrane.",
       "answers": ["Simple Diffusion", "Facilitated Diffusion", "Active Transport", "Osmosis", "Endocytosis", "Exocytosis", "Passive Transport"],
-      "points": [45, 30, 25, 25, 15, 10, 5]
+      "points": [25, 22, 18, 15, 10, 7, 3]
     },
     {
       "q": "What are jobs that cells do?",
