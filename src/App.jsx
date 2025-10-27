@@ -12,19 +12,14 @@ const BioFamilyFeud = () => {
   const [score, setScore] = useState({ team1: 0, team2: 0 });
   const [strikes, setStrikes] = useState(0);
   const [currentTeam, setCurrentTeam] = useState(1);
-  const [showQuestion, setShowQuestion] = useState(false);
-  const [teacherMode, setTeacherMode] = useState(false);
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [passwordInput, setPasswordInput] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  
-  const TEACHER_PASSWORD = 'biorocks'; // Change this to your desired password
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [timerActive, setTimerActive] = useState(false);
 
   // Load questions from JSON file
   useEffect(() => {
     const loadQuestions = async () => {
       try {
-        const response = await fetch('/questions.json');
+        const response = await fetch('./questions.json');
         if (!response.ok) {
           throw new Error('Failed to load questions');
         }
@@ -57,24 +52,58 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(0);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(false);
+      setTimerActive(false);
+      setTimeLeft(30);
+      setCurrentTeam(1);
     }
   }, [currentTopic, questions]);
+
+  // Timer effect - Manual only, no auto-restart
+  useEffect(() => {
+    let interval;
+    if (timerActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && timerActive) {
+      setTimerActive(false);
+      
+      // Timer ran out - add a strike but don't auto-restart
+      if (strikes < 2) {
+        setStrikes(strikes + 1);
+      } else {
+        // 3rd strike - switch teams and clear strikes
+        setStrikes(0);
+        setCurrentTeam(currentTeam === 1 ? 2 : 1);
+      }
+    }
+    return () => clearInterval(interval);
+  }, [timerActive, timeLeft, strikes, currentTeam]);
 
   const questionData = shuffledQuestions[currentQuestion];
 
   const revealAnswer = (index) => {
     if (!revealed.includes(index)) {
+      // Show the answer and add points
       setRevealed([...revealed, index]);
       const team = currentTeam === 1 ? 'team1' : 'team2';
       setScore({ ...score, [team]: score[team] + questionData.points[index] });
+      setTimeLeft(30); // Reset timer to 30 seconds when answer is clicked
+    } else {
+      // Hide the answer and remove points
+      setRevealed(revealed.filter(i => i !== index));
+      const team = currentTeam === 1 ? 'team1' : 'team2';
+      setScore({ ...score, [team]: score[team] - questionData.points[index] });
     }
   };
 
   const addStrike = () => {
+    setTimeLeft(30); // Reset timer when manually adding strike
     if (strikes < 2) {
+      // Add strike - no auto-restart
       setStrikes(strikes + 1);
     } else {
+      // 3rd strike - switch teams and clear strikes
       setStrikes(0);
       setCurrentTeam(currentTeam === 1 ? 2 : 1);
     }
@@ -85,7 +114,9 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(currentQuestion + 1);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(false);
+      setTimerActive(false);
+      setTimeLeft(30);
+      setCurrentTeam(1);
     }
   };
 
@@ -94,7 +125,9 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(currentQuestion - 1);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(false);
+      setTimerActive(false);
+      setTimeLeft(30);
+      setCurrentTeam(1);
     }
   };
 
@@ -108,7 +141,8 @@ const BioFamilyFeud = () => {
     setRevealed([]);
     setStrikes(0);
     setCurrentTeam(1);
-    setShowQuestion(false);
+    setTimerActive(false);
+    setTimeLeft(30);
   };
 
   const reshuffleQuestions = () => {
@@ -117,39 +151,15 @@ const BioFamilyFeud = () => {
       setCurrentQuestion(0);
       setRevealed([]);
       setStrikes(0);
-      setShowQuestion(false);
+      setTimerActive(false);
+      setTimeLeft(30);
+      setCurrentTeam(1);
     }
   };
 
-  const handleTeacherModeToggle = () => {
-    if (teacherMode) {
-      // If already in teacher mode, just turn it off
-      setTeacherMode(false);
-    } else {
-      // If not in teacher mode, show password modal
-      setShowPasswordModal(true);
-      setPasswordInput('');
-      setPasswordError('');
-    }
-  };
-
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    if (passwordInput === TEACHER_PASSWORD) {
-      setTeacherMode(true);
-      setShowPasswordModal(false);
-      setPasswordInput('');
-      setPasswordError('');
-    } else {
-      setPasswordError('Incorrect password');
-      setPasswordInput('');
-    }
-  };
-
-  const closePasswordModal = () => {
-    setShowPasswordModal(false);
-    setPasswordInput('');
-    setPasswordError('');
+  const resetTimer = () => {
+    setTimeLeft(30);
+    setTimerActive(false);
   };
 
   if (loading) {
@@ -181,76 +191,22 @@ const BioFamilyFeud = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 p-4">
-      {/* Password Modal */}
-      {showPasswordModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-            <h2 className="text-2xl font-bold text-purple-900 mb-4">Teacher Mode</h2>
-            <p className="text-gray-700 mb-4">Enter the password to access Teacher Mode:</p>
-            <form onSubmit={handlePasswordSubmit}>
-              <input
-                type="password"
-                value={passwordInput}
-                onChange={(e) => setPasswordInput(e.target.value)}
-                placeholder="Enter password"
-                className="w-full p-3 border-2 border-purple-300 rounded-lg mb-2 focus:outline-none focus:border-purple-600"
-                autoFocus
-              />
-              {passwordError && (
-                <p className="text-red-600 text-sm mb-3">{passwordError}</p>
-              )}
-              <div className="flex gap-3">
-                <button
-                  type="submit"
-                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition"
-                >
-                  Submit
-                </button>
-                <button
-                  type="button"
-                  onClick={closePasswordModal}
-                  className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg transition"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <div className="flex-1"></div>
-            <div className="flex-1 flex justify-center">
-              <h1 className="text-5xl font-bold text-yellow-400" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.5)' }}>
-                BIOLOGY FEUD
-              </h1>
-            </div>
-            <div className="flex-1 flex justify-end">
-              <button
-                onClick={handleTeacherModeToggle}
-                className={`${
-                  teacherMode 
-                    ? 'bg-green-600 hover:bg-green-700' 
-                    : 'bg-orange-600 hover:bg-orange-700'
-                } text-white font-bold py-2 px-4 rounded-lg transition text-sm`}
-              >
-                {teacherMode ? '👨‍🏫 Teacher Mode: ON' : '🔒 Teacher Mode'}
-              </button>
-            </div>
-          </div>
-          <p className="text-white text-xl">9th & 10th Grade Edition</p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 p-3">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-4">
+          <h1 className="text-4xl font-bold text-yellow-400 mb-1" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.5)' }}>
+            BIOLOGY FEUD
+          </h1>
+          <p className="text-white text-lg">Wisconsin 9th & 10th Grade Edition</p>
         </div>
 
-        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 mb-6">
-          <label className="text-white font-semibold block mb-2">Select Topic:</label>
+        {/* Topic Selection - Full Width */}
+        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-3 mb-3">
+          <label className="text-white font-semibold block mb-1 text-sm">Select Topic:</label>
           <select 
             value={currentTopic}
             onChange={(e) => setCurrentTopic(e.target.value)}
-            className="w-full p-3 rounded-lg bg-white bg-opacity-20 text-white border-2 border-white border-opacity-30 text-lg"
+            className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white border-2 border-white border-opacity-30"
           >
             {Object.keys(questions).map(topic => (
               <option key={topic} value={topic} className="bg-purple-900">{topic}</option>
@@ -258,116 +214,173 @@ const BioFamilyFeud = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className={`bg-gradient-to-br from-red-600 to-red-800 rounded-lg p-6 text-center transform transition ${currentTeam === 1 ? 'scale-105 ring-4 ring-yellow-400' : ''}`}>
-            <h2 className="text-white text-2xl font-bold mb-2">Team 1</h2>
-            <p className="text-6xl font-bold text-white">{score.team1}</p>
+        {/* Team Scores Row */}
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          <div className={`bg-gradient-to-br from-red-600 to-red-800 rounded-lg p-3 text-center ${currentTeam === 1 ? 'ring-4 ring-yellow-400' : ''}`}>
+            <h2 className="text-white text-lg font-bold">Team 1</h2>
+            <p className="text-4xl font-bold text-white">{score.team1}</p>
           </div>
-          <div className={`bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg p-6 text-center transform transition ${currentTeam === 2 ? 'scale-105 ring-4 ring-yellow-400' : ''}`}>
-            <h2 className="text-white text-2xl font-bold mb-2">Team 2</h2>
-            <p className="text-6xl font-bold text-white">{score.team2}</p>
+          <div className={`bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg p-3 text-center ${currentTeam === 2 ? 'ring-4 ring-yellow-400' : ''}`}>
+            <h2 className="text-white text-lg font-bold">Team 2</h2>
+            <p className="text-4xl font-bold text-white">{score.team2}</p>
           </div>
         </div>
 
-        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 mb-6">
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-yellow-400 font-semibold text-lg">
+        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-yellow-400 font-semibold">
               Question {currentQuestion + 1} of {shuffledQuestions.length}
             </span>
-            <div className="flex gap-2">
-              <button
-                onClick={reshuffleQuestions}
-                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition text-sm"
-              >
-                🔀 Reshuffle
-              </button>
-              <button
-                onClick={() => setShowQuestion(!showQuestion)}
-                className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 font-bold py-2 px-6 rounded-lg transition"
-              >
-                {showQuestion ? 'Hide' : 'Show'} Question
-              </button>
-            </div>
+            <button
+              onClick={reshuffleQuestions}
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
+            >
+              🔀 Reshuffle
+            </button>
+          </div>
+
+          {/* Question Selector Dropdown */}
+          <div className="mb-3">
+            <label className="text-white font-semibold block mb-1 text-sm">Jump to Question:</label>
+            <select 
+              value={currentQuestion}
+              onChange={(e) => {
+                setCurrentQuestion(Number(e.target.value));
+                setRevealed([]);
+                setStrikes(0);
+                setTimerActive(false);
+                setTimeLeft(30);
+                setCurrentTeam(1);
+              }}
+              className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white border-2 border-white border-opacity-30"
+            >
+              {shuffledQuestions.map((q, idx) => (
+                <option key={idx} value={idx} className="bg-purple-900">
+                  Question {idx + 1}: {q.q.substring(0, 60)}...
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="bg-purple-800 bg-opacity-50 rounded-lg p-4 mb-3">
+            <p className="text-white text-xl font-semibold text-center leading-relaxed">
+              {questionData.q}
+            </p>
           </div>
           
-          {showQuestion && (
-            <div className="bg-purple-800 bg-opacity-50 rounded-lg p-6 mb-4">
-              <p className="text-white text-2xl font-semibold text-center leading-relaxed">
-                {questionData.q}
-              </p>
-            </div>
-          )}
-
-          <div className="flex justify-center gap-4 mb-6">
-            {[0, 1, 2].map(i => (
-              <div key={i} className="relative">
-                {i < strikes ? (
-                  <X className="w-16 h-16 text-red-500" strokeWidth={4} />
-                ) : (
-                  <div className="w-16 h-16 border-4 border-white border-opacity-30 rounded"></div>
-                )}
+          {/* Timer Display - Centered */}
+          <div className="flex justify-center mb-3">
+            <div className={`relative w-24 h-24 flex items-center justify-center rounded-full border-6 transition-all ${
+              timeLeft <= 5 ? 'border-red-500 animate-pulse' : timeLeft <= 10 ? 'border-yellow-500' : 'border-green-500'
+            }`}>
+              <div className="text-center">
+                <div className={`text-4xl font-bold ${
+                  timeLeft <= 5 ? 'text-red-400' : timeLeft <= 10 ? 'text-yellow-400' : 'text-green-400'
+                }`}>
+                  {timeLeft}
+                    </div>
+                    <div className="text-white text-xs">seconds</div>
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
 
-          <div className="grid grid-cols-1 gap-3 mb-6">
+              {/* Strikes - Below Timer */}
+              <div className="flex justify-center gap-3 mb-3">
+                {[0, 1, 2].map(i => (
+                  <div key={i} className="relative">
+                    {i < strikes ? (
+                      <X className="w-12 h-12 text-red-500" strokeWidth={4} />
+                    ) : (
+                      <div className="w-12 h-12 border-4 border-white border-opacity-30 rounded"></div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Timer Controls */}
+              <div className="flex justify-center gap-2 mb-3">
+                <button
+                  onClick={() => {
+                    if (timerActive) {
+                      // Pause the timer
+                      setTimerActive(false);
+                    } else {
+                      // Start the timer
+                      if (timeLeft === 0) {
+                        setTimeLeft(30);
+                      }
+                      setTimerActive(true);
+                    }
+                  }}
+                  className={`${
+                    timerActive 
+                      ? 'bg-orange-500 hover:bg-orange-600' 
+                      : 'bg-green-500 hover:bg-green-600'
+                  } text-white font-bold py-1.5 px-4 rounded-lg transition text-sm`}
+                >
+                  {timerActive ? '⏸ Pause' : '▶ Start'}
+                </button>
+                <button
+                  onClick={resetTimer}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1.5 px-4 rounded-lg transition text-sm"
+                >
+                  🔄 Reset
+                </button>
+              </div>
+          
+          <div className="grid grid-cols-1 gap-2 mb-3">
             {questionData.answers.map((answer, idx) => (
               <button
                 key={idx}
                 onClick={() => revealAnswer(idx)}
-                disabled={revealed.includes(idx)}
-                className={`p-4 rounded-lg text-left transition transform hover:scale-102 ${
+                className={`p-3 rounded-lg text-left transition transform hover:scale-102 ${
                   revealed.includes(idx)
                     ? 'bg-green-600 text-white'
-                    : teacherMode
-                    ? 'bg-blue-500 bg-opacity-40 text-white hover:bg-opacity-50 border-2 border-yellow-400'
                     : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30'
                 }`}
               >
                 <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-4">
-                    <span className="text-2xl font-bold w-8">{idx + 1}</span>
-                    <span className="text-xl font-semibold">
-                      {revealed.includes(idx) || teacherMode ? answer : '???'}
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl font-bold w-6">{idx + 1}</span>
+                    <span className="text-lg font-semibold">
+                      {revealed.includes(idx) ? answer : '???'}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    {revealed.includes(idx) && (
-                      <Check className="w-6 h-6" />
-                    )}
-                    {(revealed.includes(idx) || teacherMode) && (
-                      <span className="text-2xl font-bold">{questionData.points[idx]}</span>
-                    )}
-                  </div>
+                  {revealed.includes(idx) && (
+                    <div className="flex items-center gap-2">
+                      <Check className="w-5 h-5" />
+                      <span className="text-xl font-bold">{questionData.points[idx]}</span>
+                    </div>
+                  )}
                 </div>
               </button>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-2">
             <button
               onClick={addStrike}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition"
+              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
             >
               Add Strike
             </button>
             <button
               onClick={switchTeam}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition"
+              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded-lg transition text-sm"
             >
               Switch Team
             </button>
             <button
               onClick={prevQuestion}
               disabled={currentQuestion === 0}
-              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             >
               ← Previous
             </button>
             <button
               onClick={nextQuestion}
               disabled={currentQuestion === shuffledQuestions.length - 1}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             >
               Next →
             </button>
@@ -375,25 +388,10 @@ const BioFamilyFeud = () => {
 
           <button
             onClick={resetGame}
-            className="w-full mt-3 bg-yellow-500 hover:bg-yellow-600 text-purple-900 font-bold py-3 px-4 rounded-lg transition"
+            className="w-full bg-yellow-500 hover:bg-yellow-600 text-purple-900 font-bold py-2 px-3 rounded-lg transition text-sm"
           >
             Reset Game
           </button>
-        </div>
-
-        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 text-white">
-          <h3 className="font-bold text-xl mb-3 text-yellow-400">How to Play:</h3>
-          <ol className="list-decimal list-inside space-y-2">
-            <li>Select a topic from the dropdown menu</li>
-            <li>Click "Show Question" to reveal the question to teams</li>
-            <li>Teams take turns guessing answers</li>
-            <li>Click an answer to reveal it and award points to the current team</li>
-            <li>Click "Add Strike" for incorrect answers (3 strikes switches teams)</li>
-            <li>Use "Switch Team" to manually change which team is playing</li>
-            <li>Navigate between questions with Previous/Next buttons</li>
-            <li>Click "🔀 Reshuffle" to randomize question order</li>
-            <li>The team with the most points wins!</li>
-          </ol>
         </div>
       </div>
     </div>
