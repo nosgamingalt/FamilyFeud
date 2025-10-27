@@ -67,7 +67,7 @@ const BioFamilyFeud = () => {
       }, 1000);
     } else if (timeLeft === 0 && timerActive) {
       setTimerActive(false);
-      
+
       // Timer ran out - add a strike but don't auto-restart
       if (strikes < 2) {
         setStrikes(strikes + 1);
@@ -75,6 +75,8 @@ const BioFamilyFeud = () => {
         // 3rd strike - switch teams and clear strikes
         setStrikes(0);
         setCurrentTeam(currentTeam === 1 ? 2 : 1);
+        setTimeLeft(30); // Reset timer when teams are switched due to 3rd strike
+        setTimerActive(false);
       }
     }
     return () => clearInterval(interval);
@@ -106,6 +108,8 @@ const BioFamilyFeud = () => {
       // 3rd strike - switch teams and clear strikes
       setStrikes(0);
       setCurrentTeam(currentTeam === 1 ? 2 : 1);
+      setTimerActive(false);
+      setTimeLeft(30); // Ensure timer is reset when switching teams
     }
   };
 
@@ -133,6 +137,8 @@ const BioFamilyFeud = () => {
 
   const switchTeam = () => {
     setCurrentTeam(currentTeam === 1 ? 2 : 1);
+    setTimerActive(false);
+    setTimeLeft(30); // Reset timer when switching teams manually
   };
 
   const resetGame = () => {
